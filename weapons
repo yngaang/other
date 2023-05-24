@@ -1,0 +1,178 @@
+abstract class Weapon
+{
+    public abstract void Attack();
+    public abstract int Damage {get;} ;
+    public abstract int Range {get;};
+    public abstract float AttackSpeed {get;};
+}
+
+public class Sword : Weapon
+{
+    public override void Attack()
+    {
+        //Бъём мечом
+    }
+    
+    public override int Damage
+    {
+        get {return 30;}
+    }
+    
+    public override int Range
+    {
+        get {return 2;}
+    }
+    
+    public override float AttackSpeed
+    {
+        get {return 2;}
+    }
+}
+
+public class Bow : Weapon
+{
+    public override void Attack()
+    {
+        //Стреляем из лука
+    }
+    
+    public override int Damage
+    {
+        get {return 15;}
+    }
+    
+    public override int Range
+    {
+        get {return 20;}
+    }
+    
+    public override float AttackSpeed
+    {
+        get {return 5;}
+    }
+}
+
+public class MagicStick : Weapon
+{
+    public override void Attack()
+    {
+        //Атака посохом
+    }
+    
+    public override int Damage
+    {
+        get {return 20;}
+    }
+    
+    public override int Range
+    {
+        get {return 5;}
+    }
+    
+    public override float AttackSpeed
+    {
+        get {return 3;}
+    }
+}
+
+public class Axe : Weapon
+{
+    public override void Attack()
+    {
+        //Бъём топоромо
+    }
+    
+    public override int Damage
+    {
+        get {return 40;}
+    }
+    
+    public override int Range
+    {
+        get {return 1;}
+    }
+    
+    public override float AttackSpeed
+    {
+        get {return 1;}
+    }
+}
+=========================================
+
+public abstract class WeaponFactory
+{
+    public abstract Weapon CreateWeapon();
+}
+
+public class SwordFactory : WeaponFactory
+{
+    public override Weapon CreateWeapon()
+    {
+        return new Sword();
+    }
+}
+
+public class BowFactory : WeaponFactory
+{
+    public override Weapon CreateWeapon()
+    {
+        return new Bow();
+    }
+}
+
+public class MagicStickFactory : WeaponFactory
+{
+    public override Weapon CreateWeapon()
+    {
+        return new MagicStick();
+    }
+}
+
+public class AxeFactory : WeaponFactory
+{
+    public override Weapon CreateWeapon()
+    {
+        return new Axe();
+    }
+}
+
+========================================
+
+class Player
+{
+    private string playerChoice;
+    private Weapon weapon;
+    private WeaponFactory factory;
+    private void Choice()
+    {
+        //Выбор оружия
+        return(string playerChoise);
+    }
+    
+    playerChoice = Choice();
+    
+    if (playerChoice == "Sword")
+    {
+        factory = new SwordFactory();
+    }
+    if (playerChoice == "Bow")
+    {
+        factory = new BowFactory();
+    }
+    if (playerChoice == "MagicStick")
+    {
+        factory = new MagicStickFactory();
+    }
+    if (playerChoice == "Axe")
+    {
+        factory = new AxeFactory();
+    }
+    
+    weapon = factory.CreateWeapon();
+    
+    public void Attack()
+    {
+        weapon.Attack()
+    }
+    
+}
